@@ -1,0 +1,34 @@
+name: Fotos reales
+
+on:
+  push:
+    paths: ['.github/workflows/fotos.yml']
+  workflow_dispatch:
+
+permissions:
+  contents: write
+
+jobs:
+  fotos:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - name: Descargar fotos de Wikimedia Commons
+        run: |
+          mkdir -p img
+          curl -sSfL -A "VibrasPositivasHM/1.0 (haroldco45)" -o img/capitolio.jpg "https://upload.wikimedia.org/wikipedia/commons/thumb/f/fc/Capitalio_National_de_Colombia%2C_Bogot%C3%A1.jpg/1280px-Capitalio_National_de_Colombia%2C_Bogot%C3%A1.jpg" || echo "falla capitolio"
+          curl -sSfL -A "VibrasPositivasHM/1.0 (haroldco45)" -o img/graduados.jpg "https://upload.wikimedia.org/wikipedia/commons/thumb/2/26/Line_of_young_people_at_a_commencement_ceremony.jpg/1280px-Line_of_young_people_at_a_commencement_ceremony.jpg" || echo "falla graduados"
+          curl -sSfL -A "VibrasPositivasHM/1.0 (haroldco45)" -o img/bogota.jpg "https://upload.wikimedia.org/wikipedia/commons/thumb/c/ce/Bogota%2C_Colombia.jpg/1280px-Bogota%2C_Colombia.jpg" || echo "falla bogota"
+          curl -sSfL -A "VibrasPositivasHM/1.0 (haroldco45)" -o img/graduandos.jpg "https://upload.wikimedia.org/wikipedia/commons/thumb/8/8f/Graduandos_Paname%C3%B1os.jpg/1280px-Graduandos_Paname%C3%B1os.jpg" || echo "falla graduandos"
+          curl -sSfL -A "VibrasPositivasHM/1.0 (haroldco45)" -o img/ceremonia.jpg "https://upload.wikimedia.org/wikipedia/commons/thumb/b/b4/ULB_2023_graduation_ceremony_%28DSC07623%29.jpg/1280px-ULB_2023_graduation_ceremony_%28DSC07623%29.jpg" || echo "falla ceremonia"
+          curl -sSfL -A "VibrasPositivasHM/1.0 (haroldco45)" -o img/fachada.jpg "https://upload.wikimedia.org/wikipedia/commons/thumb/3/3a/Fachada_Capitolio.jpg/1280px-Fachada_Capitolio.jpg" || echo "falla fachada"
+          curl -sSfL -A "VibrasPositivasHM/1.0 (haroldco45)" -o img/ceremonia2.jpg "https://upload.wikimedia.org/wikipedia/commons/thumb/3/32/ULB_2023_graduation_ceremony_%28DSC07624%29.jpg/1280px-ULB_2023_graduation_ceremony_%28DSC07624%29.jpg" || echo "falla ceremonia2"
+          curl -sSfL -A "VibrasPositivasHM/1.0 (haroldco45)" -o img/finlandia.jpg "https://upload.wikimedia.org/wikipedia/commons/thumb/f/f4/Suomalaisia_naisylioppilaita_1906.jpg/1280px-Suomalaisia_naisylioppilaita_1906.jpg" || echo "falla finlandia"
+          curl -sSfL -A "VibrasPositivasHM/1.0 (haroldco45)" -o img/congreso.png "https://upload.wikimedia.org/wikipedia/commons/thumb/7/77/Congreso_Colombia.png/1280px-Congreso_Colombia.png" || echo "falla congreso"
+          ls -la img
+      - name: Guardar
+        run: |
+          git config user.name "robot-vibras"
+          git config user.email "robot-vibras@users.noreply.github.com"
+          git add img
+          git diff --cached --quiet || (git commit -m "Fotos reales para la app, el flyer y el video" && git pull --rebase && git push)
