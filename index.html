@@ -1,0 +1,280 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<title>Sin Gato por Liebre — Verificador ciudadano de títulos y hojas de vida</title>
+<meta name="description" content="Comprueba en fuentes oficiales los títulos, tarjetas profesionales y certificados laborales de candidatos y funcionarios. Con tu impuesto no se pagan diplomas falsos. Vibras Positivas HM.">
+<meta name="theme-color" content="#0b1d33">
+<link rel="canonical" href="https://sin-gato-por-liebre.netlify.app/">
+<link rel="manifest" href="manifest.webmanifest">
+<link rel="icon" href="icon-192.png">
+<link rel="apple-touch-icon" href="icon-192.png">
+
+<!-- Vista previa del enlace (WhatsApp, Facebook, X) con foto real -->
+<meta property="og:type" content="website">
+<meta property="og:site_name" content="Vibras Positivas HM">
+<meta property="og:title" content="Sin Gato por Liebre — ¿Su título es real? Verifícalo antes de darle el puesto">
+<meta property="og:description" content="Verificador ciudadano de diplomas, tarjetas profesionales y cartas laborales de candidatos y funcionarios. Fuentes oficiales, señales de alerta y derecho de petición a todos los entes en un solo envío.">
+<meta property="og:url" content="https://sin-gato-por-liebre.netlify.app/">
+<meta property="og:image" content="https://upload.wikimedia.org/wikipedia/commons/thumb/f/fc/Capitalio_National_de_Colombia%2C_Bogot%C3%A1.jpg/1280px-Capitalio_National_de_Colombia%2C_Bogot%C3%A1.jpg">
+<meta property="og:image:alt" content="Capitolio Nacional de Colombia, Bogotá">
+<meta property="og:locale" content="es_CO">
+<meta property="og:locale:alternate" content="en_US">
+<meta name="twitter:card" content="summary_large_image">
+<meta name="twitter:title" content="Sin Gato por Liebre — Verificador ciudadano de títulos">
+<meta name="twitter:description" content="Diplomas, tarjetas profesionales y cartas laborales: compruébalos en fuentes oficiales.">
+<meta name="twitter:image" content="https://upload.wikimedia.org/wikipedia/commons/thumb/f/fc/Capitalio_National_de_Colombia%2C_Bogot%C3%A1.jpg/1280px-Capitalio_National_de_Colombia%2C_Bogot%C3%A1.jpg">
+
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Archivo+Black&family=Inter:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="styles.css">
+</head>
+<body>
+
+<header class="topbar" id="top">
+  <a class="brand" href="#top" aria-label="Inicio">
+    <span class="brand-mark">SG</span>
+    <span class="brand-text"><b>Sin Gato por Liebre</b><small>Vibras Positivas HM</small></span>
+  </a>
+  <nav class="topnav" aria-label="Secciones">
+    <a href="#hoy" data-i18n="nav_hoy">Hoy</a>
+    <a href="#verificar" data-i18n="nav_verificar">Verificar</a>
+    <a href="#alertas" data-i18n="nav_alertas">Alertas</a>
+    <a href="#fuentes" data-i18n="nav_fuentes">Fuentes</a>
+    <a href="#ley" data-i18n="nav_ley">La ley</a>
+    <a href="#peticion" data-i18n="nav_peticion">Petición</a>
+  </nav>
+  <div class="top-actions">
+    <button class="btn-ghost" id="btnLang" type="button" aria-label="Cambiar idioma">EN</button>
+    <button class="btn-update" id="btnUpdate" type="button" data-i18n="btn_update">Actualizar</button>
+  </div>
+</header>
+
+<!-- HERO con fotos reales -->
+<section class="hero" aria-label="Portada">
+  <div class="hero-slides" id="heroSlides"></div>
+  <div class="hero-shade"></div>
+  <div class="hero-content">
+    <p class="kicker" data-i18n="hero_kicker">App ciudadana · Control estricto a hojas de vida públicas</p>
+    <h1 data-i18n-html="hero_title">¿Ese título es real?<br><span>Que no nos metan gato por liebre.</span></h1>
+    <p class="lead" data-i18n="hero_lead">Diplomas comprados, convalidaciones que no existen, cartas laborales inventadas. Los cargos públicos los pagamos con nuestros impuestos: antes de dar un puesto o un voto, se verifica en las fuentes oficiales.</p>
+    <div class="hero-cta">
+      <a class="btn-primary" href="#verificar" data-i18n="hero_cta1">Verificar una hoja de vida</a>
+      <a class="btn-outline" href="#peticion" data-i18n="hero_cta2">Exigir respuesta a los entes</a>
+    </div>
+    <div class="hero-stats">
+      <div class="stat"><b class="count" data-to="779">0</b><span data-i18n="stat1">títulos de la U. San José bajo sospecha, según la denuncia de la congresista Jennifer Pedraza (ene 2026)</span></div>
+      <div class="stat"><b class="count" data-to="36">0</b><span data-i18n="stat2">meses de condena a Juliana Guerrero por fraude procesal con títulos irregulares (sept 2026)</span></div>
+      <div class="stat"><b class="count" data-to="15">0</b><span data-i18n="stat3">días hábiles tiene una entidad para responder tu derecho de petición</span></div>
+    </div>
+  </div>
+  <div class="ticker" aria-live="polite"><div class="ticker-track" id="ticker"></div></div>
+</section>
+
+<!-- HOY -->
+<section class="section" id="hoy">
+  <div class="wrap">
+    <div class="sec-head">
+      <p class="eyebrow" data-i18n="hoy_eyebrow">Se actualiza cada vez que entras</p>
+      <h2 data-i18n="hoy_title">Hoy</h2>
+      <p class="sec-sub"><span id="hoyFecha"></span> · <span data-i18n="hoy_robot">Robot de noticias:</span> <span id="robotHora">—</span> · <span id="liveState" data-i18n="hoy_buscando">buscando en vivo…</span></p>
+    </div>
+    <div class="hoy-grid">
+      <article class="hoy-card big" id="hoyDestacada"></article>
+      <div class="hoy-side">
+        <div class="pulse-box">
+          <b id="cntHoy">0</b><span data-i18n="hoy_cnt">noticias de hoy sobre títulos y documentos falsos</span>
+        </div>
+        <div class="pulse-box alt">
+          <b id="cntTotal">0</b><span data-i18n="hoy_total">noticias reunidas por el robot y la búsqueda en vivo</span>
+        </div>
+        <div class="pulse-box alt2">
+          <b id="cntMis">0</b><span data-i18n="hoy_mis">verificaciones guardadas en este celular</span>
+        </div>
+      </div>
+    </div>
+    <div class="filters" id="filtros"></div>
+    <div class="news-grid" id="noticias"></div>
+    <button class="btn-outline dark more" id="btnMas" type="button" data-i18n="btn_mas">Ver más noticias</button>
+  </div>
+</section>
+
+<!-- VERIFICADOR -->
+<section class="section photo-band" id="verificar">
+  <div class="band-photo" style="--img:url('https://upload.wikimedia.org/wikipedia/commons/thumb/2/26/Line_of_young_people_at_a_commencement_ceremony.jpg/1280px-Line_of_young_people_at_a_commencement_ceremony.jpg')"></div>
+  <div class="wrap">
+    <div class="sec-head light">
+      <p class="eyebrow" data-i18n="ver_eyebrow">Control estricto, paso a paso</p>
+      <h2 data-i18n="ver_title">Verificador de hoja de vida</h2>
+      <p class="sec-sub" data-i18n="ver_sub">Anota lo que la persona declara. La app te arma la ruta oficial de verificación según cada documento, marcas lo que encontraste y obtienes un semáforo y un acta para imprimir o enviar. Todo queda guardado solo en tu celular.</p>
+    </div>
+
+    <div class="mode-switch" role="tablist">
+      <button type="button" class="mode on" data-mode="ciudadano" data-i18n="mode_ciu">Soy ciudadano / votante</button>
+      <button type="button" class="mode" data-mode="entidad" data-i18n="mode_ent">Soy entidad o partido (antes de nombrar o avalar)</button>
+    </div>
+
+    <form class="ver-form" id="verForm" autocomplete="off">
+      <div class="field"><label for="fNombre" data-i18n="f_nombre">Nombre de la persona</label><input id="fNombre" required></div>
+      <div class="field"><label for="fCargo" data-i18n="f_cargo">Cargo o candidatura</label><input id="fCargo" placeholder="Ej.: Secretario de Hacienda, candidato al Concejo"></div>
+      <div class="field"><label for="fEntidad" data-i18n="f_entidad">Entidad, partido o corporación</label><input id="fEntidad"></div>
+      <div class="field"><label for="fRequisito" data-i18n="f_req">¿El cargo exige título profesional?</label>
+        <select id="fRequisito">
+          <option value="si" data-i18n="opt_si">Sí, es requisito del cargo o contrato</option>
+          <option value="no" data-i18n="opt_no">No es requisito (ej. Congreso), pero lo declaró</option>
+          <option value="nose" data-i18n="opt_nose">No sé</option>
+        </select>
+      </div>
+      <div class="docs-head">
+        <h3 data-i18n="f_docs">Documentos que presenta</h3>
+        <button type="button" class="btn-small" id="btnAddDoc" data-i18n="btn_add_doc">Agregar documento</button>
+      </div>
+      <div id="docsList"></div>
+      <button type="submit" class="btn-primary wide" data-i18n="btn_ruta">Armar ruta de verificación</button>
+    </form>
+
+    <div class="ruta" id="ruta" hidden>
+      <div class="semaforo" id="semaforo">
+        <div class="luz" data-c="rojo"></div><div class="luz" data-c="amarillo"></div><div class="luz" data-c="verde"></div>
+        <div class="sem-text"><b id="semTitulo">Sin revisar</b><span id="semDetalle"></span></div>
+      </div>
+      <div id="rutaPasos"></div>
+      <div class="ruta-actions">
+        <button type="button" class="btn-primary" id="btnGuardar" data-i18n="btn_guardar">Guardar verificación</button>
+        <button type="button" class="btn-outline" id="btnActa" data-i18n="btn_acta">Imprimir acta / PDF</button>
+        <button type="button" class="btn-outline" id="btnWa" data-i18n="btn_wa">Enviar resumen por WhatsApp</button>
+        <button type="button" class="btn-outline" id="btnAPeticion" data-i18n="btn_a_pet">Pasar al derecho de petición</button>
+      </div>
+      <p class="aviso" data-i18n="aviso_legal">Importante: un semáforo en rojo es una <b>presunta inconsistencia</b>, no una condena. Solo la entidad que expidió el documento, el Ministerio de Educación, la Procuraduría o un juez pueden declarar que un título es falso. Comparte los hechos verificados, no insultos ni acusaciones: así tu denuncia pesa y tú quedas protegido.</p>
+    </div>
+
+    <div class="mis" id="misBox">
+      <h3 data-i18n="mis_title">Mis verificaciones</h3>
+      <div id="misList" class="mis-list"></div>
+    </div>
+  </div>
+</section>
+
+<!-- SEÑALES DE ALERTA -->
+<section class="section" id="alertas">
+  <div class="wrap">
+    <div class="sec-head">
+      <p class="eyebrow" data-i18n="al_eyebrow">Lo que destaparon los casos de 2026</p>
+      <h2 data-i18n="al_title">Señales de alerta</h2>
+      <p class="sec-sub" data-i18n="al_sub">Ninguna señal por sí sola prueba un fraude, pero cada una obliga a pedir soportes y confirmar con la fuente oficial.</p>
+    </div>
+    <div class="alert-grid" id="alertGrid"></div>
+  </div>
+</section>
+
+<!-- CASOS -->
+<section class="section dark" id="casos">
+  <div class="wrap">
+    <div class="sec-head light">
+      <p class="eyebrow" data-i18n="ca_eyebrow">Para que no se repita</p>
+      <h2 data-i18n="ca_title">Casos que marcan el camino</h2>
+      <p class="sec-sub" data-i18n="ca_sub">Hechos publicados por medios nacionales. Donde no hay fallo, se habla de presuntas irregularidades.</p>
+    </div>
+    <div class="timeline" id="timeline"></div>
+  </div>
+</section>
+
+<!-- FUENTES OFICIALES -->
+<section class="section" id="fuentes">
+  <div class="wrap">
+    <div class="sec-head">
+      <p class="eyebrow" data-i18n="fu_eyebrow">Gratis y en línea</p>
+      <h2 data-i18n="fu_title">Dónde se comprueba cada cosa</h2>
+      <p class="sec-sub" data-i18n="fu_sub">Fuentes oficiales del Estado colombiano. Si un portal cambia de dirección, búscalo en la página principal de la entidad.</p>
+    </div>
+    <input class="search" id="fuenteBuscar" type="search" data-i18n-ph="fu_buscar" placeholder="Buscar: abogado, contador, convalidación, SIGEP…">
+    <div class="src-grid" id="srcGrid"></div>
+  </div>
+</section>
+
+<!-- LA LEY -->
+<section class="section photo-band" id="ley">
+  <div class="band-photo" style="--img:url('https://upload.wikimedia.org/wikipedia/commons/thumb/c/ce/Bogota%2C_Colombia.jpg/1280px-Bogota%2C_Colombia.jpg')"></div>
+  <div class="wrap">
+    <div class="sec-head light">
+      <p class="eyebrow" data-i18n="ley_eyebrow">Lo que dice la norma</p>
+      <h2 data-i18n="ley_title">La ley ya castiga el gato por liebre</h2>
+    </div>
+    <div class="law-grid" id="lawGrid"></div>
+  </div>
+</section>
+
+<!-- ANTES DE DAR EL PUESTO -->
+<section class="section" id="protocolo">
+  <div class="wrap">
+    <div class="sec-head">
+      <p class="eyebrow" data-i18n="pr_eyebrow">Para jefes de talento humano, alcaldes, gobernadores y partidos</p>
+      <h2 data-i18n="pr_title">Antes de dar el puesto o el aval</h2>
+      <p class="sec-sub" data-i18n="pr_sub">Diez controles que no cuestan plata y evitan nombrar a quien no cumple. Marca cada uno: el avance queda guardado.</p>
+    </div>
+    <div class="proto">
+      <div class="proto-bar"><div id="protoFill"></div><span id="protoPct">0 %</span></div>
+      <ol class="proto-list" id="protoList"></ol>
+    </div>
+  </div>
+</section>
+
+<!-- DERECHO DE PETICIÓN -->
+<section class="section dark" id="peticion">
+  <div class="wrap">
+    <div class="sec-head light">
+      <p class="eyebrow" data-i18n="pe_eyebrow">Artículo 23 de la Constitución · Ley 1755 de 2015</p>
+      <h2 data-i18n="pe_title">Derecho de petición a todos los entes, de una sola vez</h2>
+      <p class="sec-sub" data-i18n="pe_sub">Pide que verifiquen los documentos, que te digan qué pasó y que actúen. Tienen 15 días hábiles para responder (10 si pides documentos).</p>
+    </div>
+    <div class="pet-grid">
+      <form class="pet-form" id="petForm" autocomplete="on">
+        <div class="field"><label for="pNombre" data-i18n="p_nombre">Tu nombre completo</label><input id="pNombre" required></div>
+        <div class="field two"><div><label for="pCedula" data-i18n="p_cc">Cédula</label><input id="pCedula" inputmode="numeric"></div><div><label for="pCiudad" data-i18n="p_ciudad">Ciudad</label><input id="pCiudad" value="Caucasia, Antioquia"></div></div>
+        <div class="field two"><div><label for="pCorreo" data-i18n="p_correo">Tu correo (para la respuesta)</label><input id="pCorreo" type="email"></div><div><label for="pCel" data-i18n="p_cel">Celular</label><input id="pCel" inputmode="tel"></div></div>
+        <div class="field"><label for="pPersona" data-i18n="p_persona">Persona cuyos documentos se piden verificar</label><input id="pPersona"></div>
+        <div class="field two"><div><label for="pCargo" data-i18n="p_cargo">Cargo o candidatura</label><input id="pCargo"></div><div><label for="pEntidad" data-i18n="p_entidad">Entidad o partido</label><input id="pEntidad"></div></div>
+        <div class="field"><label for="pHechos" data-i18n="p_hechos">Lo que encontraste (hechos, fechas, fuente)</label><textarea id="pHechos" rows="5" placeholder="Ej.: En el SIGEP declara el título de Contador Público de la institución X (2025). En la consulta de programas del SNIES ese programa no aparece con registro calificado vigente para esa fecha…"></textarea></div>
+        <div class="field"><label for="pCorreoEntidad" data-i18n="p_correo_ent">Correo de la entidad que nombró o del partido que avaló (opcional)</label><input id="pCorreoEntidad" type="email" placeholder="talentohumano@entidad.gov.co"></div>
+        <fieldset class="dest">
+          <legend data-i18n="p_dest">Entes a los que se envía</legend>
+          <div id="destList"></div>
+        </fieldset>
+      </form>
+      <div class="pet-preview">
+        <div class="paper" id="petTexto"></div>
+        <div class="pet-actions">
+          <button type="button" class="btn-primary" id="btnEnviar" data-i18n="btn_enviar">Enviar a todos los entes</button>
+          <button type="button" class="btn-outline light" id="btnCopiar" data-i18n="btn_copiar">Copiar texto</button>
+          <button type="button" class="btn-outline light" id="btnPetPdf" data-i18n="btn_pet_pdf">Imprimir / PDF</button>
+          <button type="button" class="btn-outline light" id="btnPetWa" data-i18n="btn_pet_wa">Compartir por WhatsApp</button>
+        </div>
+        <p class="aviso light" id="petNota" data-i18n="pet_nota">El botón abre tu correo con todos los entes en un solo mensaje. Las entidades que reciben por formulario web quedan enlazadas abajo: pega allí el mismo texto. Guarda el número de radicado que te devuelvan.</p>
+        <div class="forms-web" id="formsWeb"></div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<footer class="footer">
+  <div class="wrap foot">
+    <div>
+      <b>Sin Gato por Liebre</b>
+      <p data-i18n="foot_txt">App ciudadana de Vibras Positivas HM. No es un sitio del Gobierno ni acusa a nadie: organiza consultas a fuentes oficiales para que la ciudadanía exija transparencia.</p>
+      <p class="small">Fotos: Wikimedia Commons (Bernard Gagnon y otros autores, licencias CC). Noticias: medios citados en cada tarjeta.</p>
+    </div>
+    <div class="foot-r">
+      <p>Harold Augusto Marín Machado · Caucasia, Antioquia</p>
+      <a class="btn-outline light" href="https://wa.me/573117700431?text=Hola%20Harold%2C%20vi%20la%20app%20Sin%20Gato%20por%20Liebre" target="_blank" rel="noopener" data-i18n="foot_wa">Quiero una app como esta</a>
+    </div>
+  </div>
+</footer>
+
+<div class="toast" id="toast" role="status"></div>
+<div id="acta" class="acta" aria-hidden="true"></div>
+
+<script src="app.js"></script>
+</body>
+</html>
