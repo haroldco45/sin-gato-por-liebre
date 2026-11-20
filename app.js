@@ -22,12 +22,7 @@ function toast(msg){ const t=$('#toast'); t.textContent=msg; t.classList.add('on
 /* ---------- Fotos reales (Wikimedia Commons) ---------- */
 const WM = 'https://upload.wikimedia.org/wikipedia/commons/thumb/';
 const PHOTOS = [
-  WM+'f/fc/Capitalio_National_de_Colombia%2C_Bogot%C3%A1.jpg/1280px-Capitalio_National_de_Colombia%2C_Bogot%C3%A1.jpg',
-  WM+'2/26/Line_of_young_people_at_a_commencement_ceremony.jpg/1280px-Line_of_young_people_at_a_commencement_ceremony.jpg',
-  WM+'c/ce/Bogota%2C_Colombia.jpg/1280px-Bogota%2C_Colombia.jpg',
-  WM+'8/8f/Graduandos_Paname%C3%B1os.jpg/1280px-Graduandos_Paname%C3%B1os.jpg',
-  WM+'b/b4/ULB_2023_graduation_ceremony_%28DSC07623%29.jpg/1280px-ULB_2023_graduation_ceremony_%28DSC07623%29.jpg',
-  WM+'3/3a/Fachada_Capitolio.jpg/1280px-Fachada_Capitolio.jpg'
+  'img/congreso.jpg','img/ceremonia.jpg','img/capitolio.jpg','img/graduados.jpg','img/ceremonia2.jpg','img/fachada.jpg'
 ];
 
 /* ---------- Textos de la interfaz (ES / EN) ---------- */

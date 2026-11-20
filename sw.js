@@ -1,5 +1,5 @@
 // Service worker: la app abre sin internet y las noticias siempre se piden frescas
-const CACHE = 'sgpl-v1';
+const CACHE = 'sgpl-v2';
 const CORE = ['./', 'index.html', 'styles.css', 'app.js', 'manifest.webmanifest', 'icon-192.png', 'icon-512.png'];
 
 self.addEventListener('install', e => {
